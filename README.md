@@ -1,142 +1,80 @@
-# Sugarcane Production — Crop Explorer
+# Faostat Crop Explorer
 
-FAOSTAT crop production data (1961–2024, 301 crops, 144 countries) exposed as a REST API and a storytelling visualisation script.
+> How did Brazil become the engine of the world's sugar supply?
 
-No API keys required — all data is fetched from public sources:
-- [FAOSTAT bulk download](https://www.fao.org/faostat) — production, area harvested, yield
+---
+
+## Brazil and the Sugarcane Century
+
+Sugarcane arrived in Brazil in the 1500s, but the modern story begins in **1975**.
+
+The global oil shock of 1973 left Brazil — then almost entirely dependent on imported oil — economically exposed. The government's response was **Pró-Álcool**, a national programme that bet the country's energy future on sugarcane ethanol. It was one of the largest energy policy experiments ever attempted.
+
+The numbers tell what happened next:
+
+| Year | Production | Area harvested | Yield | Brazil's world share |
+|------|-----------|---------------|-------|----------------------|
+| 1975 | 91.5 Mt   | 2.0 Mha       | 46.5 t/ha | 13.5% |
+| 1990 | 262.7 Mt  | 4.3 Mha       | 61.5 t/ha | 23.5% |
+| 2003 | 396.0 Mt  | 5.4 Mha       | 73.7 t/ha | 27.1% |
+| 2010 | 717.5 Mt  | 9.1 Mha       | 79.0 t/ha | **40.1%** |
+| 2020 | 756.1 Mt  | 10.0 Mha      | 75.6 t/ha | 38.0% |
+| 2023 | 782.1 Mt  | 10.0 Mha      | 77.9 t/ha | 36.8% |
+
+*Source: FAOSTAT. Mt = million tonnes. Mha = million hectares.*
+
+In 1975, Brazil produced 13.5% of the world's sugarcane. By 2010, it produced more than 40% — nearly **8× more cane from the same land**, driven by yield gains from plant breeding, mechanisation, and precision agriculture.
+
+### The flex-fuel turning point (2003)
+
+In 2003, Volkswagen launched the first mass-market flex-fuel car in Brazil — a vehicle that could run on any blend of petrol and ethanol. Within five years, more than 90% of new cars sold in Brazil were flex-fuel. Demand for ethanol surged and so did cane: production nearly doubled between 2003 and 2010.
+
+### Where the world stands today
+
+Brazil is not just the largest producer — it produces more sugarcane than the next two countries combined:
+
+| Rank | Country | Production (2023) |
+|------|---------|------------------|
+| 1 | **Brazil** | **782 Mt** |
+| 2 | India | 491 Mt |
+| 3 | China | 105 Mt |
+| 4 | Thailand | 94 Mt |
+
+The runner-up, India, is a country of 1.4 billion people with a vast agricultural base. Brazil still produces 60% more cane.
+
+### What the yield curve reveals
+
+Perhaps the most remarkable number is yield. In 1975, Brazilian fields produced **46.5 tonnes per hectare**. By 2010, that had risen to **79 t/ha** — a 70% improvement without expanding the planted area proportionally. This is the fingerprint of the Brazilian agricultural research system (Embrapa) and decades of varietal improvement.
+
+---
+
+## About this project
+
+This repository exposes the full FAOSTAT crop production dataset (1961–2024, 301 crops, 144 countries) as a REST API and a storytelling visualisation script. No API keys required.
+
+**Data sources**
+- [FAOSTAT](https://www.fao.org/faostat) — production, area harvested, yield (bulk download, cached locally)
 - [World Bank Open Data](https://data.worldbank.org/) — GDP and population for enrichment
 
----
+**Subfolders**
 
-## Project structure
+| Folder | What's inside |
+|--------|--------------|
+| [`faostat/`](faostat/README.md) | Python library — download, cache, and query FAOSTAT data |
+| [`api/`](api/README.md) | FastAPI REST API — 8 endpoints, auto-generated Swagger docs |
+| [`scripts/`](scripts/README.md) | Storytelling visualisation script |
+| `data/` | Local cache (`.gitkeep` only — populated on first run) |
+| `outputs/` | Generated plots (`.gitkeep` only — populated by the script) |
 
-```
-├── faostat/               # Core library
-│   ├── client.py          # FAOSTATClient — download, cache, query
-│   └── worldbank.py       # WorldBankClient — GDP & population
-├── api/
-│   └── main.py            # FastAPI REST API
-├── scripts/
-│   └── storytelling.py    # Visualisation script
-├── data/                  # FAOSTAT cache + original CSVs
-├── outputs/               # Generated plots
-└── requirements.txt
-```
-
----
-
-## Setup
+**Quick start**
 
 ```bash
 pip install -r requirements.txt
-```
 
-The FAOSTAT dataset (~34 MB) is downloaded automatically on first run and cached in `data/faostat_bulk.csv`. It is refreshed after 7 days.
-
----
-
-## REST API
-
-Start the server:
-
-```bash
+# Run the API
 uvicorn api.main:app --reload
-```
+# → http://localhost:8000/docs
 
-Interactive docs (Swagger UI): **http://localhost:8000/docs**
-
-### Endpoints
-
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/crops` | List all 301 available crops |
-| `GET` | `/crops/{crop}/production` | Annual production (tonnes) |
-| `GET` | `/crops/{crop}/production/top` | Top N producers for a single year |
-| `GET` | `/crops/{crop}/area` | Annual area harvested (ha) |
-| `GET` | `/crops/{crop}/yield` | Annual yield (kg / ha) |
-| `GET` | `/crops/{crop}/country/{country}` | All three metrics for one country |
-| `GET` | `/crops/{crop}/enrich` | Production + World Bank GDP & population |
-| `GET` | `/brazil/sugarcane` | Brazil sugarcane time series + world share % |
-| `GET` | `/health` | Health check |
-
-### Query parameters (common)
-
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `start` | 1990 | Start year |
-| `end` | 2024 | End year |
-| `top_n` | — | Limit to top N countries by total production |
-
-### Example requests
-
-```bash
-# Top 5 sugarcane producers in 2022
-curl "http://localhost:8000/crops/Sugar%20cane/production/top?year=2022&n=5"
-
-# Wheat production 2000-2023, top 8 countries
-curl "http://localhost:8000/crops/Wheat/production?start=2000&end=2023&top_n=8"
-
-# Brazil's sugarcane metrics 1975-2024
-curl "http://localhost:8000/brazil/sugarcane?start=1975"
-
-# Maize production enriched with GDP + population
-curl "http://localhost:8000/crops/Maize%20(corn)/enrich?top_n=10"
-
-# All metrics for India + Coffee
-curl "http://localhost:8000/crops/Coffee%2C%20green/country/India"
-```
-
----
-
-## Visualisation script
-
-Generates a two-part storytelling chart saved to `outputs/`.
-
-```bash
-# Default: sugarcane, 1990–2024, top 10
+# Run the visualisation
 python3 scripts/storytelling.py
-
-# Different crop for the global comparison section
-python3 scripts/storytelling.py --crop "Maize (corn)"
-python3 scripts/storytelling.py --crop "Wheat" --start 2000 --end 2023 --top 8
-python3 scripts/storytelling.py --crop "Coffee, green" --top 5
-
-# List all available crop names
-python3 scripts/storytelling.py --list-crops
-```
-
-The chart has two independent sections:
-
-**Part A — Global crop comparison** (switches with `--crop`)
-- Production time series for top N countries
-- World production share (stacked area)
-- Growth rate from start to end year
-
-**Part B — Brazil sugarcane storytelling** (always fixed)
-- Production + harvested area with policy milestones annotated
-- Yield efficiency (t/ha) vs Brazil's world share
-- Decade pie charts: world production share in 1990 vs latest year
-
----
-
-## Using the library directly
-
-```python
-from faostat import FAOSTATClient, WorldBankClient
-
-faostat = FAOSTATClient()
-
-# List all crops
-faostat.list_crops()
-
-# Top producers
-faostat.top_producers("Sugar cane", year=2022, n=10)
-
-# Time series for one country
-faostat.get_country("Sugar cane", "Brazil", start=1975, end=2024)
-
-# Enrich with World Bank data
-from faostat import WorldBankClient
-wb = WorldBankClient()
-wb.enrich(["Brazil", "India", "Thailand"], year=2022)
 ```
