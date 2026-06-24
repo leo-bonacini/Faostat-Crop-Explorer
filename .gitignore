@@ -1,0 +1,25 @@
+# FAOSTAT bulk cache (downloaded automatically, ~397 MB)
+data/faostat_bulk.csv
+
+# Generated files
+data/crop_enriched.csv
+data/sugarcane_enriched.csv
+outputs/*
+!outputs/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/
