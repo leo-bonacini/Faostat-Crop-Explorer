@@ -4,8 +4,7 @@ data/faostat_bulk.csv
 # Generated files
 data/crop_enriched.csv
 data/sugarcane_enriched.csv
-outputs/*
-!outputs/.gitkeep
+outputs/.gitkeep
 
 # Python
 __pycache__/
