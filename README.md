@@ -8,7 +8,7 @@
 
 Sugarcane arrived in Brazil in the 1500s, but the modern story begins in **1975**.
 
-The global oil shock of 1973 left Brazil — then almost entirely dependent on imported oil — economically exposed. The government's response was **Pró-Álcool**, a national programme that bet the country's energy future on sugarcane ethanol. It was one of the largest energy policy experiments ever attempted.
+The global oil shock of 1973 left Brazil, then almost entirely dependent on imported oil, economically exposed. The government's response was **Pró-Álcool**, a national programme that bet the country's energy future on sugarcane ethanol. It was one of the largest energy policy experiments ever attempted.
 
 The numbers tell what happened next:
 
@@ -23,29 +23,29 @@ The numbers tell what happened next:
 
 *Source: FAOSTAT. Mt = million tonnes. Mha = million hectares.*
 
-In 1975, Brazil produced 13.5% of the world's sugarcane. By 2010, it produced more than 40% — nearly **8× more cane from the same land**, driven by yield gains from plant breeding, mechanisation, and precision agriculture.
+In 1975, Brazil produced 13.5% of the world's sugarcane. By 2010, it produced more than 40%, nearly **8× more cane from the same land**, driven by yield gains from plant breeding, mechanisation, and precision agriculture.
 
 ![Brazil sugarcane production and harvested area 1975–2024](outputs/04_brazil_production_area.png)
 
-The chart above shows the two curves that define Brazil's sugarcane story: production (yellow) and harvested area (green dashed). Notice how the flex-fuel inflection of 2003 accelerated both, and how production continued rising even as area growth levelled off — the signature of improving yield.
+The chart above shows the two curves that define Brazil's sugarcane story: production (yellow) and harvested area (green dashed). Notice how the flex-fuel inflection of 2003 accelerated both, and how production continued rising even as area growth levelled off, the signature of improving yield.
 
 ---
 
 ### The flex-fuel turning point (2003)
 
-In 2003, Volkswagen launched the first mass-market flex-fuel car in Brazil — a vehicle that could run on any blend of petrol and ethanol. Within five years, more than 90% of new cars sold in Brazil were flex-fuel. Demand for ethanol surged and so did cane: production nearly doubled between 2003 and 2010.
+In 2003, Volkswagen launched the first mass-market flex-fuel car in Brazil, a vehicle that could run on any blend of petrol and ethanol. Within five years, more than 90% of new cars sold in Brazil were flex-fuel. Demand for ethanol surged and so did cane: production nearly doubled between 2003 and 2010.
 
 Zoom out to the global picture and Brazil's trajectory is even more striking:
 
 ![Global sugarcane production top 10 countries 1990–2024](outputs/01_global_production_timeseries.png)
 
-Every other major producer grew modestly. Brazil grew exponentially. The gap between Brazil and India — the second-largest producer — widened from roughly 30 Mt in 1990 to nearly 300 Mt by 2010.
+Every other major producer grew modestly. Brazil grew exponentially. The gap between Brazil and India, the second-largest producer, widened from roughly 30 Mt in 1990 to nearly 300 Mt by 2010.
 
 ---
 
 ### Where the world stands today
 
-Brazil is not just the largest producer — it produces more sugarcane than the next two countries combined:
+Brazil is not just the largest producer, it produces more sugarcane than the next two countries combined:
 
 | Rank | Country | Production (2023) |
 |------|---------|------------------|
@@ -58,17 +58,17 @@ The runner-up, India, is a country of 1.4 billion people with a vast agricultura
 
 ![World sugarcane share 1990 vs 2023](outputs/06_world_share_comparison.png)
 
-In 1990, the world's sugarcane was broadly distributed — Brazil held 23.5%, India 20%, and Cuba was still a significant producer at 7.3%. By 2023, the picture had consolidated sharply: Brazil alone accounts for 36.8% of all cane grown on Earth, while Cuba has all but disappeared from the global chart.
+In 1990, the world's sugarcane was broadly distributed, Brazil held 23.5%, India 20%, and Cuba was still a significant producer at 7.3%. By 2023, the picture had consolidated sharply: Brazil alone accounts for 36.8% of all cane grown on Earth, while Cuba has all but disappeared from the global chart.
 
 ---
 
 ### What the yield curve reveals
 
-Perhaps the most remarkable number is yield. In 1975, Brazilian fields produced **46.5 tonnes per hectare**. By 2010, that had risen to **79 t/ha** — a 70% improvement without expanding the planted area proportionally. This is the fingerprint of the Brazilian agricultural research system (Embrapa) and decades of varietal improvement.
+Perhaps the most remarkable number is yield. In 1975, Brazilian fields produced **46.5 tonnes per hectare**. By 2010, that had risen to **79 t/ha**, a 70% improvement without expanding the planted area proportionally. This is the fingerprint of the Brazilian agricultural research system (Embrapa) and decades of varietal improvement.
 
 ![Brazil sugarcane yield efficiency and world dominance](outputs/05_brazil_yield_dominance.png)
 
-The blue line tracks yield per hectare; the red dashed line tracks Brazil's share of world production. The two curves rise together — higher yield unlocked the ethanol economics that drove area expansion, and area expansion funded further research. A reinforcing cycle that took Brazil from 13.5% of world production in 1975 to a sustained 35–40% today.
+The blue line tracks yield per hectare; the red dashed line tracks Brazil's share of world production. The two curves rise together, higher yield unlocked the ethanol economics that drove area expansion, and area expansion funded further research. A reinforcing cycle that took Brazil from 13.5% of world production in 1975 to a sustained 35–40% today.
 
 ---
 
@@ -76,7 +76,7 @@ The blue line tracks yield per hectare; the red dashed line tracks Brazil's shar
 
 ![Global production growth rate 1990–2024](outputs/03_global_growth_rate.png)
 
-Brazil's 200%+ growth over 34 years is the standout, but the chart also reveals how broadly sugarcane expanded: every top-10 producer grew. The crop's global footprint roughly doubled — from around 1.1 billion tonnes in 1990 to over 2.1 billion tonnes today.
+Brazil's 200%+ growth over 34 years is the standout, but the chart also reveals how broadly sugarcane expanded: every top-10 producer grew. The crop's global footprint roughly doubled, from around 1.1 billion tonnes in 1990 to over 2.1 billion tonnes today.
 
 ![World sugarcane production share over time](outputs/02_global_world_share.png)
 
