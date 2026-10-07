@@ -23,7 +23,7 @@ from matplotlib.lines import Line2D
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from faostat import FAOSTATClient, WorldBankClient
 
-# ── CLI ───────────────────────────────────────────────────────────────────────
+# Cli
 parser = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
 parser.add_argument("--crop",       default="Sugar cane")
@@ -43,7 +43,7 @@ if args.list_crops:
 
 print(f"Crop: {args.crop}  |  {args.start}–{args.end}  |  top {args.top}")
 
-# ── Data preparation ──────────────────────────────────────────────────────────
+# Data preparation
 prod_top = faostat.get_production(args.crop, args.start, args.end, top_n=args.top)
 top_countries = (
     prod_top.groupby("country")["production_tonnes"].sum()
@@ -92,7 +92,7 @@ def world_top_share(year: int, n: int = 6):
     values = list(top["production_tonnes"]) + [float(others)]
     return labels, values
 
-# ── Styling constants ─────────────────────────────────────────────────────────
+# Styling constants
 BRAND  = "#2E7D32"
 ACCENT = "#FDD835"
 RED    = "#C62828"
@@ -142,7 +142,7 @@ def _shorten(name: str) -> str:
                 .replace("Bolivia (Plurinational State of)", "Bolivia")
                 .replace("Tanzania, United Republic of", "Tanzania"))
 
-# ── Plot 1 · Global production time series ───────────────────────────────────
+# Plot 1 · Global production time series
 def plot_timeseries():
     fig, ax = plt.subplots(figsize=(14, 6), facecolor=BG)
     _style(ax)
@@ -167,7 +167,7 @@ def plot_timeseries():
     _source(fig)
     _save(fig, "01_global_production_timeseries.png")
 
-# ── Plot 2 · World production share (stacked area) ───────────────────────────
+# Plot 2 · World production share (stacked area)
 def plot_world_share():
     common_y  = sorted(set(pivot.index) & set(world_total.index))
     pivot_pct = pivot.loc[common_y].div(world_total.loc[common_y], axis=0) * 100
@@ -194,7 +194,7 @@ def plot_world_share():
     _source(fig)
     _save(fig, "02_global_world_share.png")
 
-# ── Plot 3 · Growth rate ─────────────────────────────────────────────────────
+# Plot 3 · Growth rate
 def plot_growth_rate():
     bar_colors = [ACCENT if c == "Brazil" else (RED if growth_pct[c] < 0 else BRAND)
                   for c in growth_pct.index]
@@ -217,7 +217,7 @@ def plot_growth_rate():
     _source(fig)
     _save(fig, "03_global_growth_rate.png")
 
-# ── Plot 4 · Brazil: production & harvested area ─────────────────────────────
+# Plot 4 · Brazil: production & harvested area
 def plot_brazil_production():
     fig, ax1 = plt.subplots(figsize=(14, 6), facecolor=BG)
     _style(ax1)
@@ -249,7 +249,7 @@ def plot_brazil_production():
     _source(fig)
     _save(fig, "04_brazil_production_area.png")
 
-# ── Plot 5 · Brazil: yield efficiency & world dominance ──────────────────────
+# Plot 5 · Brazil: yield efficiency & world dominance
 def plot_brazil_yield():
     fig, ax1 = plt.subplots(figsize=(14, 6), facecolor=BG)
     _style(ax1)
@@ -289,7 +289,7 @@ def plot_brazil_yield():
     _source(fig)
     _save(fig, "05_brazil_yield_dominance.png")
 
-# ── Plot 6 · World share comparison pies (1990 vs latest) ────────────────────
+# Plot 6 · World share comparison pies (1990 vs latest)
 def plot_world_pies():
     pie_year_2 = min(2023, args.end)
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 7), facecolor=BG)
@@ -317,7 +317,7 @@ def plot_world_pies():
     _source(fig)
     _save(fig, "06_world_share_comparison.png")
 
-# ── Run all plots ─────────────────────────────────────────────────────────────
+# Run all plots
 print("\nGenerating plots…")
 plot_timeseries()
 plot_world_share()

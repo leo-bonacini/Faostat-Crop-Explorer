@@ -1,5 +1,5 @@
 """
-FAOSTATClient — downloads and caches the FAOSTAT bulk crop/livestock dataset.
+FAOSTATClient - downloads and caches the FAOSTAT bulk crop/livestock dataset.
 
 The 34 MB zip is saved to data/faostat_bulk.csv and refreshed automatically
 after CACHE_MAX_DAYS days so callers always work from a local file.
@@ -42,7 +42,7 @@ class FAOSTATClient:
         self._df: pd.DataFrame | None = None
         self._items: pd.DataFrame | None = None
 
-    # ── public ────────────────────────────────────────────────────────────────
+    # public
 
     def list_crops(self) -> list[str]:
         """Return all crop names present in the dataset."""
@@ -135,7 +135,7 @@ class FAOSTATClient:
             [["rank", "country", "production_tonnes"]]
         )
 
-    # ── internal ──────────────────────────────────────────────────────────────
+    # internal
 
     def _fetch(
         self,

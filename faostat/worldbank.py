@@ -1,5 +1,5 @@
 """
-WorldBankClient — thin wrapper around the World Bank open data API.
+WorldBankClient - thin wrapper around the World Bank open data API.
 
 No API key is required. Fetches GDP and population per country/year
 and joins them onto a FAOSTAT production DataFrame.
@@ -119,7 +119,7 @@ class WorldBankClient:
             time.sleep(self._sleep)
         return pd.DataFrame(rows)
 
-    # ── internal ──────────────────────────────────────────────────────────────
+    # internal
 
     def _fetch(self, iso3: str, indicator: str, year: int) -> float | None:
         url = _BASE_URL.format(iso3=iso3, indicator=indicator)

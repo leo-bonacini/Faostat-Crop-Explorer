@@ -25,7 +25,7 @@ python3 scripts/storytelling.py --list-crops
 | `--start` | `1990` | Start year |
 | `--end` | `2024` | End year |
 | `--top` | `10` | Number of top countries to include |
-| `--list-crops` | — | Print all available crop names and exit |
+| `--list-crops` | - | Print all available crop names and exit |
 
 ## Output
 
@@ -33,13 +33,13 @@ The chart is saved to `outputs/story_{crop}_{start}_{end}.png`.
 
 ## Chart structure
 
-**Part A — Global crop comparison** *(switches with `--crop`)*
+**Part A - Global crop comparison** *(switches with `--crop`)*
 
 - Time-series lines for the top N countries
 - Stacked area showing each country's share of world production
 - Growth rate bar chart from start year to end year
 
-**Part B — Brazil sugarcane storytelling** *(always fixed)*
+**Part B - Brazil sugarcane storytelling** *(always fixed)*
 
 - Production volume and harvested area since 1975, with key policy milestones annotated:
   - 1975: Pró-Álcool programme launched

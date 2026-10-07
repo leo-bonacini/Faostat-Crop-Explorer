@@ -63,7 +63,7 @@ client.top_producers("Sugar cane", year=2023, n=5)
 #     4         Thailand        93981770.0
 #     5         Pakistan        89100000.0
 
-# Brazil sugarcane: production, area, yield — all years
+# Brazil sugarcane: production, area, yield - all years
 brazil = client.get_country("Sugar cane", "Brazil", start=1975, end=2024)
 #       production_tonnes    area_ha  yield_kg_ha
 # year

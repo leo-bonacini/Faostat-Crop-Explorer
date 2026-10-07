@@ -20,7 +20,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from faostat import FAOSTATClient, WorldBankClient
 
-# ── Startup: load data once ───────────────────────────────────────────────────
+# Startup: load data once
 
 _faostat = FAOSTATClient(cache_max_days=7)
 _worldbank = WorldBankClient()
@@ -44,7 +44,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# ── Response models ───────────────────────────────────────────────────────────
+# Response models
 
 class ProductionRecord(BaseModel):
     country: str
@@ -81,7 +81,7 @@ class BrazilMetrics(BaseModel):
     yield_kg_ha: Optional[float]
     world_share_pct: Optional[float]
 
-# ── Routes ────────────────────────────────────────────────────────────────────
+# Routes
 
 @app.get("/health", tags=["meta"])
 def health():
@@ -188,10 +188,10 @@ def enrich(
     Production data enriched with World Bank GDP and population.
 
     Adds:
-    - `gdp_bn_usd` — GDP at current USD (billions)
-    - `population` — total population
-    - `production_per_capita_kg` — kg of crop per person
-    - `production_per_gdp_kt_per_bn` — kilotonnes per billion USD of GDP
+    - `gdp_bn_usd` - GDP at current USD (billions)
+    - `population` - total population
+    - `production_per_capita_kg` - kg of crop per person
+    - `production_per_gdp_kt_per_bn` - kilotonnes per billion USD of GDP
     """
     try:
         prod = _faostat.get_production(crop, start, end, top_n)

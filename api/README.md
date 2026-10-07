@@ -52,7 +52,7 @@ Alternative docs (ReDoc): **http://localhost:8000/redoc**
 |-----------|------|---------|-------------|
 | `start` | int | 1990 | Start year |
 | `end` | int | 2024 | End year |
-| `top_n` | int | — | Limit to top N countries by total production |
+| `top_n` | int | - | Limit to top N countries by total production |
 | `year` | int | 2022 | Reference year (for `/production/top`) |
 | `n` | int | 10 | Number of results (for `/production/top`) |
 
